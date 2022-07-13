@@ -15,8 +15,8 @@ class App extends React.Component{
 }
 
 handleClickMin = (e) => {
-  console.log(this.state.count)
-  if(this.state.count > 0){ 
+  // console.log(this.state.count)
+  if(this.state.count > 1){ 
     this.setState({
       count: this.state.count - 1
   })
@@ -24,7 +24,8 @@ handleClickMin = (e) => {
 }
 
 handleClickMax = (e) => {
-if(this.state.count !== 100){
+  console.log(teams.length)
+if(this.state.count !== teams.length){
     this.setState({
       count: this.state.count + 1
     })
@@ -42,8 +43,9 @@ if(this.state.count !== 100){
           substract = {this.handleClickMin}
           />
         </div>
+        
         <div className='container'>
-        {teams.map(team => {
+        {teams.filter((team,i) => i < this.state.count).map(team => {
         return (
           <TeamInfo
           shortName = {team.shortName}
